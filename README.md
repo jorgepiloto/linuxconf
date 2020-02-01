@@ -20,12 +20,12 @@ preferred terminal emulator:
 <img align="left" height="140" width="220" src="wallpapers/wolf_winter.jpg">
 <img align="left" height="140" width="220" src="wallpapers/bash_wallpaper.png">
 
-## Elegant theme, icons and desktop bar
+## Elegant wolf theme
 
 By making use of `Marwaita Osx Dark` theme in combination with `Flat Remix
 Icons` and `Plank` it os possible to finally get a beautifull environment:
 
-## XFCE4 Terminal + OhMyZSH + vimrc
+## XFCE4 Terminal + OhMyZSH + dotfiles
 
 By making use of the popular XFCE terminal combined with the "oh my zsh" one
 can achieve good looking results while having a huge efficiency desktop
@@ -33,6 +33,11 @@ development.
 
 User will find specific configuration files for each of the previous tools
 under the `/dotfiles` directory
+
+Furthermore, you should install the following tools: they are amazing!
+
+- [x] Lazygit: https://github.com/jesseduffield/lazygit
+- [x] Ranger: https://ranger.github.io/
 
 ## Custom commands
 
