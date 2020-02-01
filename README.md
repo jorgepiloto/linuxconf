@@ -16,11 +16,9 @@ Wolfs are my favourite animals, that is the reason behind wallpapers selection.
 Colorful ones are for main desktop while the black acts as background for your
 preferred terminal emulator:
 
-<img align="left" height="140" width="220" src="wallpapers/wolf_summer.jpg">
-<img align="left" height="140" width="220" src="wallpapers/wolf_winter.jpg">
-<img align="left" height="140" width="220" src="wallpapers/bash_wallpaper.png">
-
-## Elegant wolf theme
+<img align="left" height="160" width="240" hspace="15" src="wallpapers/wolf_summer.jpg">
+<img align="left" height="160" width="240" hspace="15" src="wallpapers/wolf_winter.jpg">
+<img align="left" height="160" width="240" hspace="15" src="wallpapers/bash_wallpaper.png">
 
 By making use of `Marwaita Osx Dark` theme in combination with `Flat Remix
 Icons` and `Plank` it os possible to finally get a beautifull environment:
