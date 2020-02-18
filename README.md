@@ -29,6 +29,9 @@ By making use of the popular XFCE terminal combined with the "oh my zsh" one
 can achieve good looking results while having a huge efficiency desktop
 development.
 
+System font may be found in "Nerd Fonts Package", under the name of "Monoid
+Nerd Font Mono Regular" at a size value of 16.
+
 User will find specific configuration files for each of the previous tools
 under the `/dotfiles` directory
 
