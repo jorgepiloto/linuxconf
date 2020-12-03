@@ -5,22 +5,44 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+" Description:
+" -----------
+"
+"  This configuration file for Vim editor is focused on a vanilla Vim approach,
+"  meaning that a minimum quantity of plugins is used.
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""" VIM General: Configuration
-set nocompatible "Necesary for lots of cool vim things
-set nobackup "No backup files
-set nowritebackup "No backup files when editing
-set noswapfile "No swap files
+set nocompatible	" Necessary for lots of cool vim things
+set nobackup 		" No backup files
+set nowritebackup 	" No backup files when editing
+set noswapfile 		" No swap files
+set textwidth=80	" Wrap at 80 characters
+set colorcolumn=80	" Show a solid colored column
+set path+=**		" Provides tab completion for all file-related
+set wildmenu		" Display a simple menu completion
+set spelllang=en_us	" Enable American English spelling by default
+set spell		" Activate spell checking
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""" Python IDE: Configuration
-set nu "Shows number lines
-set encoding=utf-8 "Selects editor encoding
-syntax on "Enables syntax
-set colorcolumn=80
+set nonu 		" Do not show absolute number line
+set relativenumber 	" Show relative number line
+set encoding=utf-8 	" Selects editor encoding
+syntax on 		" Enables syntax
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""" Shortcuts: Configuration
-map <tab> <C-W><C-W> 
+" Execute Python scripts just by pressing F5
 nmap <F5> <Esc>:w<CR>:!clear;python %<CR>
+
+" Execute Python testing just by pressing F6
 nmap <F6> <Esc>:w<CR>:!clear;pytest -vv %<CR>
+
+" Apply both black and isort by pressing F7
+nmap <F7> <Esc>:w<CR>:!clear;black % && isort %<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" Vundle: Configuration
 " set the runtime path to include Vundle and initialize
@@ -31,25 +53,13 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-scripts/indentpython.vim' 		" Python Autoidentation
-Plugin 'vim-airline/vim-airline' 		" Powerline
-Plugin 'vim-airline/vim-airline-themes'		" Powerline-themes
-Plugin 'Yggdroot/indentLine'			" Identation bars
-Plugin 'https://github.com/scrooloose/nerdtree' " Nerd-tree
-Plugin 'ryanoasis/vim-devicons'			" Nerd-tree icon colors	
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' " Nerd-tree highlight	
-Plugin 'davidhalter/jedi-vim'			" Jedi Vim	
-Plugin 'Valloric/YouCompleteMe'			" Suggestions for vim
-Plugin 'airblade/vim-gitgutter'			" Git indicatior		
-Plugin 'myusuf3/numbers.vim'			" Relative numbering
-Plugin 'ctrlpvim/ctrlp.vim'			" File searching
-Plugin 'jorgepiloto/volk'			" Custom colorscheme		
-Plugin 'fadein/vim-FIGlet'			" Ascii-art
-Plugin 'christoomey/vim-system-copy'		" For copy-paste 
-Plugin 'kamykn/spelunker.vim'			" Spell checker for Vim
-Plugin 'caglartoklu/ftcolor.vim'		" Switches colorschemes according to the file type
-Plugin 'caglartoklu/launchassociated.vim'	" Launches current file with the associated program
+Plugin 'VundleVim/Vundle.vim'		" Required for managing plugins
+Plugin 'vim-scripts/AutoComplPop'	" Pops a completion menu
+Plugin 'airblade/vim-gitgutter'		" Shows git diff sign in right side
+Plugin 'jorgepiloto/volk'		" Custom colortheme for vim
+Plugin 'simeji/winresizer'		" Resize windows easy
+Plugin 'kien/ctrlp.vim'			" Faster than find command
+Plugin 'hura/vim-asymptote'		" Syntax highlight for asymptote
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
@@ -59,47 +69,26 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""" Theme: Configuration
-colorscheme volk
 highlight ColorColumn ctermbg=red
+colorscheme volk
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""" Poweline: Configuration
-"let g:airline_theme='powerlineish'
-"let g:airline_theme='onehalfdark'
-"let g:airline#extensions#tabline#enabled = 0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""" NerdTree: Configuration
-nmap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeMinimalUI = v:true
+""""""""""""""""""""""""""""""""""""""""""""""""""" Status Bar: Configuration
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Git: Configuration
+
+""""""""""""""""""""""""""""""""""""""""""""""""""" Git Gutter: Configuration
 set updatetime=100
-"highlight GitGutterAdd    guifg=#009900 guibg=#121212 ctermfg=2 ctermbg=0
-"highlight GitGutterChange guifg=#bbbb00 guibg=#121212 ctermfg=3 ctermbg=0
-"highlight GitGutterDelete guifg=#ff2222 guibg=#121212 ctermfg=1 ctermbg=0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Todo: Configuration
-let mapleader = ","
-let g:simple_todo_tick_symbol = '✓'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""" Tagbar: Configuration
-"nmap <F8> :TagbarToggle<CR>
+augroup filetypedetect
+au BufNewFile,BufRead *.asy     setf asy
+augroup END
+filetype plugin on
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""" Numbers: Configuration
-nnoremap <F4> :NumbersOnOff<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""" Ctrlp: Configuration
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""" Spellunker: Configuration 
-let g:enable_spelunker_vim = 0
 
